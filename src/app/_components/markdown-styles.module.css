@@ -1,0 +1,89 @@
+.markdown {
+  @apply text-lg leading-relaxed;
+}
+
+.markdown p,
+.markdown ul,
+.markdown ol,
+.markdown blockquote {
+  @apply my-6;
+}
+
+.markdown ul {
+  @apply list-disc list-inside;
+}
+
+.markdown ol {
+  @apply list-decimal list-inside;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply list-outside pl-6; /* Gunakan list-outside agar bullet di luar indent */
+}
+
+.markdown li {
+  position: relative;
+  padding-left: 0.5rem; /* Geser teks agar ada ruang sebelum teks */
+  text-indent: 0rem; /* Tarik baris pertama ke kiri */
+}
+
+.markdown h2 {
+  @apply text-3xl mt-12 mb-4 leading-snug;
+}
+
+.markdown h3 {
+  @apply text-2xl mt-8 mb-4 leading-snug;
+}
+
+.markdown h4 {
+  @apply text-xl mt-8 mb-4 leading-snug;
+}
+
+/* Penambahan CSS markdown Table */
+.markdown table {
+  display: block;           /* 🧠 kunci agar bisa scroll */
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: normal;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid #e5e7eb; /* Tailwind gray-200 */
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.markdown th {
+  background-color: #f9fafb; /* Tailwind gray-50 */
+  font-weight: 600;
+}
+
+.markdown tr:nth-child(even) {
+  background-color: #f3f4f6; /* Tailwind gray-100 */
+}
+
+.markdown a {
+  text-decoration: underline;
+}
+
+.markdown pre {
+  @apply bg-gray-100 p-4 rounded overflow-x-auto;
+  white-space: pre;
+  
+}
+
+.markdown pre code {
+  padding: 0; /* hilangkan padding bawaan */
+  margin: 0;  /* hilangkan margin bawaan */
+  background: none; /* hindari background dobel */
+  border: none;
+  font-family: inherit;
+}
+
+.markdown code {
+  @apply font-mono bg-gray-100 px-1 rounded text-pink-600;
+}
