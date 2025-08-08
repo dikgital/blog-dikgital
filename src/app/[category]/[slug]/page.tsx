@@ -13,16 +13,16 @@ import { RelatedArticles } from "@/app/_components/related-articles";
 import ArticleSchema from "@/app/_components/jsonld/article-schema";
 import { headers } from "next/headers";
 
-// ✅ Tambahkan tipe untuk parameter route
-type RouteParams = {
-  params: {
-    category: string;
-    slug: string;
-  };
-};
-
-export default async function Post({ params }: RouteParams) {
-  const post = getPostBySlug(params.slug, params.category);
+// ✅ Ubah type params jadi Promise dan tambah async
+export default async function Post({
+  params,
+}: {
+  params: Promise<{ category: string; slug: string }>;
+}) {
+  // ✅ Await params untuk dapetin nilai category dan slug
+  const { category, slug } = await params;
+  
+  const post = getPostBySlug(slug, category);
 
   if (!post) {
     return notFound();
@@ -30,11 +30,11 @@ export default async function Post({ params }: RouteParams) {
 
   const content = await markdownToHtml(post.content || "");
 
-  const relatedPosts = getPostsByCategory(params.category)
-    .filter((p) => p.slug && p.slug !== params.slug && p.title)
+  const relatedPosts = getPostsByCategory(category)
+    .filter((p) => p.slug && p.slug !== slug && p.title)
     .slice(0, 3);
 
-  const rawHeaders = headers();
+  const rawHeaders = await headers();
   const headersObj: Record<string, string> = {};
   rawHeaders.forEach((value: string, key: string) => {
     headersObj[key.toLowerCase()] = value;
@@ -49,7 +49,7 @@ export default async function Post({ params }: RouteParams) {
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `${baseUrl}/${params.category}/${params.slug}`,
+      "@id": `${baseUrl}/${category}/${slug}`,
     },
     "headline": post.title,
     "description": post.excerpt,
@@ -80,7 +80,7 @@ export default async function Post({ params }: RouteParams) {
       <main>
         <Container>
           <HeaderNav />
-          <Breadcrumb category={params.category} title={post.title} />
+          <Breadcrumb category={category} title={post.title} />
           <PostHeader
             title={post.title}
             coverImage={post.coverImage}
@@ -118,11 +118,16 @@ export default async function Post({ params }: RouteParams) {
   );
 }
 
-// ✅ gunakan RouteParams agar parameternya konsisten dan tidak ada garis merah
+// ✅ Ubah type params jadi Promise di generateMetadata juga
 export async function generateMetadata({
   params,
-}: RouteParams): Promise<Metadata> {
-  const post = getPostBySlug(params.slug, params.category);
+}: {
+  params: Promise<{ category: string; slug: string }>;
+}): Promise<Metadata> {
+  // ✅ Await params di sini juga
+  const { category, slug } = await params;
+  
+  const post = getPostBySlug(slug, category);
 
   if (!post) {
     return notFound();
@@ -141,8 +146,10 @@ export async function generateMetadata({
   };
 }
 
-// ✅ gunakan RouteParams["params"] agar tetap strict
-export async function generateStaticParams(): Promise<RouteParams["params"][]> {
+// ✅ generateStaticParams tetap sama, gak perlu diubah
+export async function generateStaticParams(): Promise<
+  { category: string; slug: string }[]
+> {
   const posts = getAllPosts();
 
   return posts
