@@ -3,24 +3,39 @@ import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import cn from "classnames";
+import { headers } from "next/headers";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: `Dikgital: Artikel Seputar Python dan AI untuk Technical SEO`,
-  description: `Insights dan tips seputar Python SEO dan Technical SEO dari Diki Atmodjo.`,
-  openGraph: {
-    images: [HOME_OG_IMAGE_URL],
-  },
-  robots: {
-  index: process.env.VERCEL_URL?.includes('.vercel.app') ? false : true,
-  follow: true,
-  googleBot: {
-  index: process.env.VERCEL_URL?.includes('.vercel.app') ? false : true,
-  follow: true,
-      }
-  },
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers();
+  const host = headersList.get('host') || '';
+  
+  // Check if accessing via Vercel subdomain
+  const isVercelDomain = host.includes('.vercel.app') || 
+                        host.includes('blog-dikgital-dikgitals-projects') ||
+                        host.includes('blog-dikgital-git-main-dikgitals-projects');
+  
+  return {
+    title: `Dikgital: Artikel Seputar Python dan AI untuk Technical SEO`,
+    description: `Insights dan tips seputar Python SEO dan Technical SEO dari Diki Atmodjo.`,
+    openGraph: {
+      images: [HOME_OG_IMAGE_URL],
+    },
+    // Robots directive - eksplisit
+    robots: isVercelDomain 
+      ? { 
+          index: false, 
+          follow: false, 
+          noarchive: true, 
+          nosnippet: true 
+        }
+      : { 
+          index: true, 
+          follow: true 
+        },
+  };
 }
 
 export default function RootLayout({

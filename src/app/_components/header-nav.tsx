@@ -23,7 +23,7 @@ const HeaderNav = () => {
                 className="object-contain"
                 />
               </div>
-              <span className="hidden md:inline">Dikgital.</span>
+              <span className="hidden md:inline">dikgital.</span>
           </Link>
         </span>
 
