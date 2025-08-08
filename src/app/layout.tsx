@@ -1,5 +1,5 @@
 import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import cn from "classnames";
@@ -13,7 +13,15 @@ export const metadata: Metadata = {
   openGraph: {
     images: [HOME_OG_IMAGE_URL],
   },
-};
+  robots: {
+  index: process.env.VERCEL_URL?.includes('.vercel.app') ? false : true,
+  follow: true,
+  googleBot: {
+  index: process.env.VERCEL_URL?.includes('.vercel.app') ? false : true,
+  follow: true,
+      }
+  },
+}
 
 export default function RootLayout({
   children,
