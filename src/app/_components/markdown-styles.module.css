@@ -9,6 +9,22 @@
   @apply my-6;
 }
 
+/* Styling untuk blockquote */
+.markdown blockquote {
+    border-left: 4px solid #FFCB05;
+    margin: 1rem 0;
+    padding: 0;
+    background: #f9f9f9;
+}
+
+/* Styling untuk paragraph di dalam blockquote */
+.markdown blockquote p {
+    margin: 0;
+    padding: 1rem;
+    font-family: serif;
+    color: #444444;
+}
+
 .markdown ul {
   @apply list-disc list-inside;
 }
@@ -48,6 +64,7 @@
   white-space: normal;
   border-collapse: collapse;
   margin: 1.5rem 0;
+  font-size: 1rem;
 }
 
 .markdown th,
@@ -85,5 +102,5 @@
 }
 
 .markdown code {
-  @apply font-mono bg-gray-100 px-1 rounded text-pink-600;
+  @apply font-mono bg-gray-100 px-1 rounded text-base text-pink-600;
 }
