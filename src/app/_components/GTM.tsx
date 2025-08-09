@@ -1,34 +1,51 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Script from 'next/script'
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
+// Extend Window interface to include dataLayer
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
+
 export default function GTM() {
+  const [isClient, setIsClient] = useState(false)
+
   useEffect(() => {
-    // Check if we're on production domain
+    // Mark as client-side after hydration
+    setIsClient(true)
+    
+    // Only initialize on production domain
     const isProduction = !window.location.hostname.includes('vercel.app') && 
                         !window.location.hostname.includes('localhost') && 
                         !window.location.hostname.includes('127.0.0.1')
     
     if (!isProduction || !GTM_ID) return
 
-    // Initialize dataLayer
-    window.dataLayer = window.dataLayer || []
-    window.dataLayer.push({
-      'gtm.start': new Date().getTime(),
-      event: 'gtm.js'
-    })
+    // Initialize dataLayer if not exists
+    if (typeof window !== 'undefined') {
+      (window as any).dataLayer = (window as any).dataLayer || []
+      ;(window as any).dataLayer.push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      })
+    }
   }, [])
 
-  // Check if we should render (client-side only)
-  const isProduction = typeof window !== 'undefined' && 
+  // Don't render anything until client-side hydration is complete
+  if (!isClient || !GTM_ID) return null
+
+  // Check production domain (client-side only)
+  const isProduction = typeof window !== 'undefined' &&
                       !window.location.hostname.includes('vercel.app') && 
                       !window.location.hostname.includes('localhost') && 
                       !window.location.hostname.includes('127.0.0.1')
 
-  if (!isProduction || !GTM_ID) return null
+  if (!isProduction) return null
 
   return (
     <>
