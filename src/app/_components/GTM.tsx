@@ -1,78 +1,68 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Script from 'next/script'
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID
 
-// Extend Window interface to include dataLayer
-declare global {
-  interface Window {
-    dataLayer: any[];
-  }
-}
-
 export default function GTM() {
-  const [isClient, setIsClient] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // Mark as client-side after hydration
-    setIsClient(true)
+    setMounted(true)
     
-    // Only initialize on production domain
-    const isProduction = !window.location.hostname.includes('vercel.app') && 
-                        !window.location.hostname.includes('localhost') && 
-                        !window.location.hostname.includes('127.0.0.1')
-    
-    if (!isProduction || !GTM_ID) return
+    if (typeof window !== 'undefined' && GTM_ID) {
+      // Debug info
+      console.log('🔧 GTM Component Debug:', {
+        hostname: window.location.hostname,
+        GTM_ID: GTM_ID,
+        userAgent: navigator.userAgent.substring(0, 50) + '...'
+      })
 
-    // Initialize dataLayer if not exists
-    if (typeof window !== 'undefined') {
-      (window as any).dataLayer = (window as any).dataLayer || []
+      // Force initialize dataLayer
+      ;(window as any).dataLayer = (window as any).dataLayer || []
+      
+      // Push initial GTM event
       ;(window as any).dataLayer.push({
         'gtm.start': new Date().getTime(),
         event: 'gtm.js'
       })
+
+      console.log('✅ DataLayer initialized:', (window as any).dataLayer)
+
+      // Inject GTM script manually
+      const script = document.createElement('script')
+      script.async = true
+      script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`
+      
+      script.onload = () => {
+        console.log('✅ GTM script loaded successfully')
+        console.log('📊 Final dataLayer:', (window as any).dataLayer)
+      }
+      
+      script.onerror = (error) => {
+        console.error('❌ GTM script failed to load:', error)
+      }
+
+      document.head.appendChild(script)
+      console.log('🚀 GTM script injected for ID:', GTM_ID)
+    } else {
+      console.warn('⚠️ GTM not loaded:', {
+        hasWindow: typeof window !== 'undefined',
+        GTM_ID: GTM_ID
+      })
     }
   }, [])
 
-  // Don't render anything until client-side hydration is complete
-  if (!isClient || !GTM_ID) return null
-
-  // Check production domain (client-side only)
-  const isProduction = typeof window !== 'undefined' &&
-                      !window.location.hostname.includes('vercel.app') && 
-                      !window.location.hostname.includes('localhost') && 
-                      !window.location.hostname.includes('127.0.0.1')
-
-  if (!isProduction) return null
+  if (!mounted || !GTM_ID) return null
 
   return (
-    <>
-      {/* GTM Script */}
-      <Script
-        id="gtm-script"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${GTM_ID}');
-          `,
-        }}
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+        height="0"
+        width="0"
+        style={{ display: 'none', visibility: 'hidden' }}
       />
-      
-      {/* GTM noscript */}
-      <noscript>
-        <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-          height="0"
-          width="0"
-          style={{ display: 'none', visibility: 'hidden' }}
-        />
-      </noscript>
-    </>
+    </noscript>
   )
 }
