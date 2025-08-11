@@ -27,6 +27,7 @@ export function HeroPost({
 }: Props) {
   return (
     <section>
+      <h2 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight">Artikel terbaru</h2>
       <div className="mb-8 md:mb-16">
         <CoverImage title={title} src={coverImage} category={category} slug={slug} />
       </div>
@@ -37,9 +38,9 @@ export function HeroPost({
               {title}
             </Link>
           </h3>
-          <div className="flex flex-row mb-4 md:mb-0 text-lg">
+          <div className="flex flex-row gap-1 mb-4 md:mb-0 text-sm">
             <DateFormatter dateString={date} />
-            <div>{readingTime && ` · ${readingTime}`}</div>
+            <div>{readingTime && `• ${readingTime}`}</div>
           </div>
         </div>
         <div>

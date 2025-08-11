@@ -138,7 +138,7 @@ Berikut langkah-langkah mengaktifkan fitur ini di RankMath:
 
 * Masuk ke **WordPress Dashboard** → **RankMath** → **Dashboard**.  
 * Cari modul **Sitemap** dan pastikan statusnya **Aktif**.  
-* Modul ini akan otomatis menghasilkan sitemap index (misalnya `https://domain.com/sitemap_index.xml`).
+
 
 #### 2. Konfigurasi Jenis Konten yang Masuk ke Sitemap
 

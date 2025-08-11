@@ -21,6 +21,11 @@ export default function Index() {
     <main>
       <Container>
         <HeaderNav />
+        <section className="mb-8 md:mb-16 md:w-[50%]">
+          <h1 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight">Kumpulan artikel tentang Technical SEO dan Python SEO</h1>
+          <p>Insights dan tips seputar Technical SEO dan juga apa yang bisa kita lakukan dengan Python untuk SEO tasks kita.</p>
+        </section>
+        <hr className="mb-8 md:mb-16 h-[2px] bg-gray-700"/>
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.coverImage}
