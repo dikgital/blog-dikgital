@@ -55,7 +55,7 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Diki Atmodjo",
               "url": "https://dikgital.com",
-              "image": "https://dikgital.com/public/assets/blog/authors/diki.jpg",
+              "image": "https://dikgital.com/assets/blog/authors/diki.jpg",
               "sameAs": "https://www.linkedin.com/in/dikiatmodjo/",
               "jobTitle": "SEO Consultant"
             }),
