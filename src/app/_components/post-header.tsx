@@ -33,7 +33,7 @@ export function PostHeader({ title, coverImage, date, author, readingTime }: Pro
         <span className="inline">•</span>
         <DateFormatter dateString={date} />
         <span className="inline">•</span>
-        <div>{readingTime && ` · ${readingTime}`}</div>
+        <div>{readingTime && `${readingTime}`}</div>
       </div>
 
       {/* Cover Image */}

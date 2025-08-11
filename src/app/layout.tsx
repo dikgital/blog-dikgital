@@ -20,9 +20,15 @@ export async function generateMetadata(): Promise<Metadata> {
   
   return {
     title: `Dikgital: Artikel Seputar Python dan AI untuk Technical SEO`,
-    description: `Insights dan tips seputar Python SEO dan Technical SEO dari Diki Atmodjo.`,
+    description: `Insights dan tips seputar Technical SEO dan Python untuk SEO dari Diki Atmodjo.`,
+    applicationName: 'Dikgital',
+    keywords: ['Technical SEO', 'Python', 'AI', 'SEO', 'Diki Atmodjo'],
+    authors: [{ name: 'Diki Atmodjo', url: 'https://dikgital.com' }],
+    creator: 'Diki Atmodjo',
     openGraph: {
       images: [HOME_OG_IMAGE_URL],
+      siteName: 'Dikgital',
+      type: 'website',
     },
     // Robots directive - eksplisit
     robots: isVercelDomain 
@@ -78,7 +84,6 @@ export default function RootLayout({
           sizes="16x16"
           href="/favicon/favicon-16x16.png"
         />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
         <link
           rel="mask-icon"
           href="/favicon/safari-pinned-tab.svg"
@@ -90,7 +95,7 @@ export default function RootLayout({
           name="msapplication-config"
           content="/favicon/browserconfig.xml"
         />
-        <meta name="theme-color" content="#000" />
+        <meta name="theme-color" content="#1D1D1D" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
