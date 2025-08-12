@@ -42,6 +42,9 @@ const HeaderNav = () => {
           <Link href="/category/technical-seo" className="hover:underline">
             Technical SEO
           </Link>
+          <Link href="/category/python-seo" className="hover:underline">
+            Python SEO
+          </Link>
           <Link href="/category/istilah-seo" className="hover:underline">
             Istilah
           </Link>
@@ -56,6 +59,9 @@ const HeaderNav = () => {
         <nav className="mt-4 flex flex-col gap-2 text-sm md:hidden">
           <Link href="/category/technical-seo" className="hover:underline">
             Technical SEO
+          </Link>
+          <Link href="/category/python-seo" className="hover:underline">
+            Python SEO
           </Link>
           <Link href="/category/istilah-seo" className="hover:underline">
             Istilah
