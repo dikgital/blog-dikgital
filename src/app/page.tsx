@@ -4,6 +4,7 @@ import { HeroPost } from "@/app/_components/hero-post";
 import HeaderNav from "@/app/_components/header-nav";
 import { MoreStories } from "@/app/_components/more-stories";
 import { getAllPosts } from "@/lib/api";
+import { getSearchIndex } from "@/lib/searchIndex";
 
 export const metadata: Metadata = {
   title: "Dikgital: Artikel Seputar Python dan AI untuk Technical SEO",
@@ -17,10 +18,12 @@ export default function Index() {
 
   const morePosts = allPosts.slice(1);
 
+  const searchIndex = getSearchIndex();
+
   return (
     <main>
       <Container>
-        <HeaderNav />
+        <HeaderNav searchIndex={searchIndex}/>
         <section className="mb-8 md:mb-16 md:w-[50%]">
           <h1 className="mb-8 text-3xl md:text-5xl font-bold tracking-tighter leading-tight">Kumpulan artikel tentang Technical SEO dan Python SEO</h1>
           <p>Insights dan tips seputar Technical SEO dan juga apa yang bisa kita lakukan dengan Python untuk SEO tasks kita.</p>

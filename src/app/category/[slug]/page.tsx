@@ -6,6 +6,7 @@ import { MoreStories } from "@/app/_components/more-stories";
 import { getPostsByCategory, getAllPosts } from "@/lib/api";
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/app/_components/breadcrumb";
+import { getSearchIndex } from "@/lib/searchIndex";
 
 // ✅ Ubah type Props - params sekarang jadi Promise
 type Props = {
@@ -36,6 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // ✅ Halaman utama untuk kategori - tambah async dan await params
 export default async function CategoryPage({ params }: Props) {
+  const searchIndex = getSearchIndex();
+
   const { slug } = await params; // ✅ Await params untuk dapetin slug
   
   const posts = getPostsByCategory(slug);
@@ -50,7 +53,7 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <main>
       <Container>
-        <HeaderNav />
+        <HeaderNav searchIndex={searchIndex} />
         <Breadcrumb category={slug} />
         <h1 className="text-3xl font-bold mb-10">
           Semua artikel dengan topik {slug.replace(/-/g, " ")}

@@ -2,6 +2,7 @@ import Container from "@/app/_components/container";
 import HeaderNav from "@/app/_components/header-nav";
 import Footer from "@/app/_components/footer";
 import type { Metadata } from "next";
+import { getSearchIndex } from "@/lib/searchIndex";
 
 export const metadata: Metadata = {
   title: "Tentang Diki Atmodjo",
@@ -9,10 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default function TentangPage() {
+  const searchIndex = getSearchIndex();
   return (
     <main>
       <Container>
-        <HeaderNav />
+        <HeaderNav searchIndex={searchIndex} />
         <section className="prose lg:prose-lg mx-auto my-12 w-full lg:w-[75%]">
           <h1 className="text-3xl lg:text-5xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-left">Tentang Diki Atmodjo</h1>
           <img className="mb-12 w-[200px] h-auto rounded-full" src="/assets/blog/authors/diki.jpg"/>

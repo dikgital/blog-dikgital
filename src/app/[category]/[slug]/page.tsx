@@ -12,6 +12,7 @@ import { TableOfContents } from "@/app/_components/table-of-contents";
 import { RelatedArticles } from "@/app/_components/related-articles";
 import ArticleSchema from "@/app/_components/jsonld/article-schema";
 import { headers } from "next/headers";
+import { getSearchIndex } from "@/lib/searchIndex";
 
 // ✅ Ubah type params jadi Promise dan tambah async
 export default async function Post({
@@ -29,6 +30,8 @@ export default async function Post({
   }
 
   const content = await markdownToHtml(post.content || "");
+
+  const searchIndex = getSearchIndex();
 
   const relatedPosts = getPostsByCategory(category)
     .filter((p) => p.slug && p.slug !== slug && p.title)
@@ -79,7 +82,7 @@ export default async function Post({
       />
       <main>
         <Container>
-          <HeaderNav />
+          <HeaderNav searchIndex={searchIndex} />
           <Breadcrumb category={category} title={post.title} />
           <PostHeader
             title={post.title}

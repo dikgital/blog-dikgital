@@ -25,6 +25,7 @@ Walaupun tidak ada keharusan seorang SEO harus bisa menguasai bahasa pemrograman
 Dibandingkan dengan tools SEO komersial, Python akan memberi kamu “kebebasan penuh” untuk mengatur cara kerja sesuai kebutuhan, bukan hanya mengikuti fitur bawaan software yang mungkin cukup menyedot budget projectmu.
 
 > **Disclaimer:**
+>
 > Aku bukan expert di bidang Python, aku masih sering banget buat vibe coding untuk bikin tools-tools SEO.
 > Jadi kalo aku yang udah kepala empat dan nggak punya background coding aja bisa, kenapa kamu nggak?
 
