@@ -1,5 +1,5 @@
 ---
-title: "Mengoptimalkan SEO dengan Python: Panduan Lengkap untuk Pemula"
+title: "Mengoptimalkan SEO dengan Python: dari Bikin Sitemap sampai Data Analysis"
 excerpt: "Pelajari bagaimana Python dapat membantu mengotomatisasi tugas SEO, big data analysis, dan membangun custom SEO tools untuk meningkatkan performa situs."
 coverImage: "/assets/blog/python-untuk-seo/python-untuk-seo.webp"
 date: "2025-08-12"
@@ -28,6 +28,8 @@ Dibandingkan dengan tools SEO komersial, Python akan memberi kamu “kebebasan p
 >
 > Aku bukan expert di bidang Python, aku masih sering banget buat vibe coding untuk bikin tools-tools SEO.
 > Jadi kalo aku yang udah kepala empat dan nggak punya background coding aja bisa, kenapa kamu nggak?
+
+Langsung [install Python](/python-seo/cara-install-python-di-windows) kamu sekarang!
 
 ## Otomatisasi Tugas SEO dengan Python
 
