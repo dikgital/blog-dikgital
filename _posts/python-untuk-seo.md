@@ -46,7 +46,7 @@ Keuntungan otomatisasi ini jelas: hemat waktu, hemat biaya, dan meminimalisir hu
 
 ## Python untuk Analisis dan Pengolahan Data SEO
 
-Salah satu kekuatan Python adalah kemampuannya untuk mengolah data dari berbagai sumber. Dengan bantuan library seperti `Pandas` dan `NumPy`, kita bisa menggabungkan data dari Google Analytics, Google Search Console, Ahrefs, atau bahkan database internal.
+Salah satu kekuatan Python adalah kemampuannya untuk mengolah data dari berbagai sumber. Dengan bantuan [library](/python-seo/python-library) seperti `Pandas` dan `NumPy`, kita bisa menggabungkan data dari Google Analytics, Google Search Console, Ahrefs, atau bahkan database internal.
 
 Untuk keyword research, Python bisa digunakan untuk mengumpulkan data volume pencarian, tingkat persaingan, dan saran keyword. Analisis kompetitor juga bisa jadi lebih detail karena kita bisa scrape data langsung dari website kompetitor (dengan catatan mematuhi aturan robots.txt).
 

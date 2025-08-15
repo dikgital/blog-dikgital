@@ -92,7 +92,7 @@ export default async function Post({
             readingTime={post.readingTime}
           />
 
-          <div className="lg:grid lg:grid-cols-[250px_1fr] lg:gap-12">
+          <div className="lg:grid lg:grid-cols-[300px_1fr] lg:gap-12">
             <aside className="hidden lg:block">
               <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-auto pr-4">
                 <TableOfContents />

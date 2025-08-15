@@ -30,7 +30,7 @@ export function TableOfContents() {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block sticky top-24 left-[5%] w-75 max-h-[80vh] overflow-y-auto p-4 border rounded-lg bg-white shadow text-sm">
+      <aside className="hidden lg:block sticky top-24 left-[5%] w-full max-h-[70vh] overflow-y-auto p-4 border rounded-lg bg-white shadow text-sm">
         <span className="font-bold text-base mb-2">Daftar Isi</span>
         <ul className="space-y-1">
           {headings.map((heading) => (
@@ -61,7 +61,7 @@ export function TableOfContents() {
         {open && (
           <div className="fixed inset-0 z-50 bg-white p-6 overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-bold">Daftar Isi</h2>
+              <span className="text-lg font-bold">Daftar Isi</span>
               <button onClick={() => setOpen(false)} aria-label="Tutup">
                 <X className="w-5 h-5" />
               </button>

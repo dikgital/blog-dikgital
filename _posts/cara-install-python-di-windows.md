@@ -65,7 +65,7 @@ Atau versi berapapun nantinya yang kamu install.
 
 ## Langkah 4: Cek Instalasi pip
 
-`pip` adalah package manager bawaan Python yang berguna untuk menginstal library tambahan.
+`pip` adalah package manager bawaan Python yang berguna untuk [menginstal library Python](/python-seo/python-library) tambahan.
 
 Di Command Prompt, ketik:
 

@@ -84,7 +84,7 @@ Karena semakin banyak traffic dengan intent tinggi yang masuk, dengan sendirinya
 
 Apakah saya perlu mengeluarkan biaya untuk melakukan SEO?
 
-Tidak selalu. Ada beberapa strategi SEO yang dapat dilakukan secara gratis, seperti menulis konten berkualitas, melakukan optimasi meta deskripsi, dan mengoptimalkan tautan internal di websitemu. Namun, untuk melakukan optimasi SEO yang lebih kompleks, seperti optimasi topic dan keyword/keyphrase, optimasi teknis, dan restrukturisasi website, kamu mungkin perlu mengeluarkan biaya untuk mempekerjakan agensi SEO.
+Tidak selalu. Ada beberapa strategi SEO yang dapat dilakukan secara gratis, seperti menulis [konten berkualitas](/istilah-seo/konten-website), melakukan optimasi meta deskripsi, dan mengoptimalkan tautan internal di websitemu. Namun, untuk melakukan optimasi SEO yang lebih kompleks, seperti optimasi topic dan keyword/keyphrase, optimasi teknis, dan restrukturisasi website, kamu mungkin perlu mengeluarkan biaya untuk mempekerjakan agensi SEO.
 
 Berapa lama waktu yang dibutuhkan untuk melihat hasil dari SEO?
 
