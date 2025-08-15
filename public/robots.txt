@@ -2,8 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /preview/
+Disallow: /search/
 
-# Block indexing on Vercel preview/staging subdomains
 User-agent: *
 Host: dikgital.com
 

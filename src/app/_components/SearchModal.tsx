@@ -35,7 +35,7 @@ export default function SearchModal({ searchIndex, onClose }: SearchModalProps) 
           ✕
         </button>
 
-        <h2 className="text-xl font-bold mb-4">Cari Artikel</h2>
+        <span className="text-xl font-bold">Kamu ingin cari apa?</span>
         <SearchBox index={searchIndex} />
       </div>
     </div>

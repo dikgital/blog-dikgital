@@ -5,7 +5,7 @@ export default function SearchPage() {
   const index = getSearchIndex();
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Cari Artikel</h1>
+      <span className="text-2xl font-bold mb-6">Kamu ingin cari apa?</span>
       <SearchBox index={index} />
     </main>
   );

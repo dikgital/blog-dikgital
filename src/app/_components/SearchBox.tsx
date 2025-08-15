@@ -49,7 +49,7 @@ export default function SearchBox({ index }: SearchBoxProps) {
   }
 
   return (
-    <div>
+    <div className="mt-4">
       <input
         type="text"
         placeholder="Cari artikel..."
@@ -61,8 +61,8 @@ export default function SearchBox({ index }: SearchBoxProps) {
       {query && (
         <ul className="mt-4">
           {results.map(({ item }) => (
-            <li key={item.url}>
-              <a href={item.url} className="text-blue-600 hover:underline">
+            <li className="mb-3" key={item.url}>
+              <a href={item.url} className="text-gray-600 hover:underline">
                 {item.title}
               </a>
             </li>
